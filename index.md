@@ -1,11 +1,11 @@
 ---
 layout: default
-title: frosthub
+title: FR05TBYTE
 ---
 
 # 🦿 ↗️  🗻
 
-I am Frost and this is my corner of the internet. Here you can read things that matter to me. AI, Cyber Security, Philosophy, and more. For the innovators of tomorrow.
+I am Frost and this is my corner of the internet. I write about AI + Cyber Security.
 
 ## ✍️ articles
 {% assign sorted_posts = site.posts | sort: "date" | reverse %}
@@ -17,6 +17,6 @@ I am Frost and this is my corner of the internet. Here you can read things that 
 ## 👤 contact me
 
 You can reach me on [LinkedIn](https://www.linkedin.com/in/frostsec) or via [contact@frost.fyi](mailto:contact@frost.fyi)
-Find me on Twitter/X [@frostxlol](https://x.com/frostxlol)
+Find me on Twitter/X [@FR05TBYTE_](https://x.com/FR05TBYTE_)
 
 ---
