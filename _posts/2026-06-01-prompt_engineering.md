@@ -2,6 +2,7 @@
 layout: default
 title: Prompt Engineering
 permalink: /prompt-engineering/
+last_modified_at: 2026-07-10
 ---
 
 # Prompt Engineering
