@@ -35,3 +35,7 @@ Tools and function definitions follow close behind, giving the model a suite of 
 Retrieved/external content (web search results, RAG documents) and key info/summaries come next. 
 Full conversation history is often truncated and summarized, i.e. compressed into smaller high-quality representations through context compression.
 Current user input comes last to exploit recency bias, often accompanied by scaffolding such as delimiters, tags, format instructions, or few-shot examples to further shape output.
+
+## Input Context
+
+In practice, input context is not simply a static context stack. Contemporary models with agentic capabilities do not just start outputting response tokens immediately - they read the full input context and condition on available tools and functions, system identity, methodology, and hard constraints (safety guardrails, sandboxed environment, etc.), then reason through a CoT-style iterative process called [ReAct](https://arxiv.org/abs/2210.03629) (Reason + Act), generating intermediate reasoning tokens that guide further generation within the turn. When external information or actions are needed, they call tools, whereupon an orchestration layer executes them. Results are fed back into the input context, and the cycle repeats. That is, contemporary models loop through the ReAct cycle of Reason -> Act -> Observe until they have enough information to produce a final response aligned with the system prompt and user input.
