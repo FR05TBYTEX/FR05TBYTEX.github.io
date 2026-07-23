@@ -9,7 +9,7 @@ At a high level, Context is everything an LLM ingests at inference time; and Con
 
 **NB. Context Engineering =/= Prompt Engineering; see below:**
 <img src="/assets/pengi_vs_cengi.png" alt="Prompt Engineering vs Context Engineering" style="max-width:100%; height:auto;">
-For further info ,see my [earlier article]({% post_url 2026-06-01-prompt-engineering %}) where I go deep on system prompts and provide practical examples.
+For further info ,see my [earlier article]({% post_url 2026-06-01-prompt_engineering %}) where I go deep on system prompts and provide practical examples.
 
 More precisely, context engineering is how one designs, structures, and optimizes context input at the point of ingestion such that model understanding and reasoning are maximized, model outputs are consistently relevant and high quality, and model behavior is predictable and aligned with stated goals/use cases.
 
