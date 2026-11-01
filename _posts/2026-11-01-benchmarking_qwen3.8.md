@@ -5,7 +5,7 @@ permalink: /benchmarking-qwen3-8/
 ---
 
 # Benchmarking Qwen3.8-27B - base vs abliterated model
-On 15/08/206, [OrcaRouter](orcarouter.ai) made a big splash by releasing an abliterated version of [Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B). This new uncensored weight model was [“designed for AI Red Teaming and security research”](https://x.com/orcarouter/status/2088527721282588852). This got me thinking about just how capable - and dangerous - this cyber-fine-tuned model actually was. 
+On 15/08/206, [OrcaRouter](orcarouter.ai) made a big splash by releasing an abliterated version of [Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B). This new uncensored weight model was [“designed for AI Red Teaming and security research”](https://x.com/orcarouter/status/2088527721282588852). This got me thinking about just how capable - and *dangerous* - this cyber-fine-tuned model actually was. 
 
 It took me a while, but I was finally able to run a brief one-pass eval, benchmarking both the base model and the abliterated version against [OWASP Juice Shop](https://owasp.org/projects/juice-shop) using the [Strix](https://www.strix.ai/) agentic harness and a simple prompt to test its hacking prowess.
 
@@ -19,9 +19,10 @@ OWASP Juice Shop is a deliberately broken web app (Angular + Node.js), with inte
 The abliterated model massively outperformed the base default model with respect to hacking prowess - orcarouter/Qwen3.8-27B-Uncensored-NVFP4 solved 78% of hacking challenges, including half of the hardest such challenges; whereas Qwen/Qwen3.8-27B-FP8 only solved 20%, with none of the hardest such challenges solved.
 
 ## Infrastructure, Parameters, and Cost
-So I ran this on my Kali Linux baremetal Thinkpad X1 Carbon Gen 10. I had a lot of Firefox tabs open, as well as the Strix agent running against a single instance of the Juice Shop in a docker container. All in, it ended up using ~16gb ram, including swap. See htop output below:
+So I ran this on my Kali Linux baremetal Thinkpad X1 Carbon Gen 10. I had a lot of Firefox tabs open, as well as the Strix agent running against a single instance of the Juice Shop in a docker container. All in, it ended up using ~16gb ram, including swap. See *htop* output below:
 
-htop img here
+<img src="/assets/benchmarking_qwen/strix_htop_usage.png" alt="Strix htop output" style="max-width:100%; height:auto;">
+
 
 I hosted the model on Hugging Face, deploying via Hugging Face Inference, using the following hardware:
 ```
