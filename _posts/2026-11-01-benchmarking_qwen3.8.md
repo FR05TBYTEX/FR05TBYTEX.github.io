@@ -31,7 +31,7 @@ Nvidia RTX PRO 6000 Blackwell 1x GPU • 96 GB
 $2.75 / h
 ```
 
-inference endpoint img here
+<img src="/assets/benchmarking_qwen/qwen3-8_HF_hardware.png" alt="Strix htop output" style="max-width:100%; height:auto;">
 
 I only did one run per model, with each run lasting 3 hours. Both models - the base FP8 and the abliterated NVFP4 - used the same GPU. As I understand it, the Blackwell family of GPUs is optimized to work best with NVFP4 models, but also works well with FP8 quantized models, and I needed fast and reliable inference, which influenced my decision to use these specs.
 
@@ -66,7 +66,7 @@ strix --target http://127.0.0.1:3000 --scan-mode standard --instruction-file ./j
 
 Frustratingly, despite the explicit instructions above, there was an additional nudge I had to give Strix to prod into the right direction, since it kept circling back to the challenges that were disabled because I was running juice shop in a container. It was simply telling the harness to “ignore and skip any challenges that are disabled in a docker run”, with a final nudge when it hit minute 170 (at minute 180 - 3 hours - I paused and deleted the endpoint, meaning there was a hard stop at 3 hours of inference): “wrap it up, you have 3 minutes”. 
 
-pause instance at 180min image here
+<img src="/assets/benchmarking_qwen/180min_pause.png" alt="Strix htop output" style="max-width:100%; height:auto;">
 
 ## Results 
 The results are pretty decisive - the abliterated version significantly outperforms the default, safety-aligned model. While expected - this is a hacking challenge, safety-aligned models frequently refuse to follow direct orders; whereas abliterated models (read: “safety alignment substantially removed”) have no such objections - the sheer magnitude of the difference surprised me. Going into this, I assumed that the agentic harness - Strix - would obviate much of the issues commonly faced when prompting non-abliterated models to perform cybersecurity, particularly offensive cybersecurity, tasks. It seems that post-training safety alignment exerts substantial influence on whether or not a model will comply, and more importantly successfully execute, cybersecurity tasks. 
