@@ -13,7 +13,8 @@ OWASP Juice Shop is a deliberately broken web app (Angular + Node.js), with inte
 
 ## TL;DR GIVE ME THE RESULTS!
 
-results img here 
+<img src="/assets/benchmarking_qwen/qwen_base_vs_abliterated_juice_shop_results.png" alt="Qwen3.8-27B-FP8 vs orcarouter/Qwen3.8-27B-NVFP4" style="max-width:100%; height:auto;">
+
 
 The abliterated model massively outperformed the base default model with respect to hacking prowess - orcarouter/Qwen3.8-27B-Uncensored-NVFP4 solved 78% of hacking challenges, including half of the hardest such challenges; whereas Qwen/Qwen3.8-27B-FP8 only solved 20%, with none of the hardest such challenges solved.
 
