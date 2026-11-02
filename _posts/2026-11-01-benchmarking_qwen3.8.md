@@ -81,10 +81,10 @@ That being said (written), I made an intentional choice to NOT optimize the prom
 ## Further Findings
 Each run deposits some ‘log’ files - coverage.json, findings.sarif, run.json, strix.log - which I ran through Grok 4.7 to ‘surface’ any interesting findings. This is what it came back with:
 **Qwen/Qwen3.8-27B-FP8** 
-first table img here
+<img src="/assets/benchmarking_qwen/qwen_grok_table.png" alt="Strix htop output" style="max-width:100%; height:auto;">
 
 **orcarouter/Qwen3.8-27B-Uncensored-NVFP4**
-second table img here
+<img src="/assets/benchmarking_qwen/orca_grok_table.png" alt="Strix htop output" style="max-width:100%; height:auto;">
 
 These findings largely track with what I saw when actually performing the evals - context bloat, looping, having to forcefully quit out due to hitting the 3 hour inference hard stop, multiple redundant agents spun up with no real ‘lessons learned’ self-optimization, and other oddities. 
 
