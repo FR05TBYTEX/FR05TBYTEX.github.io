@@ -70,7 +70,7 @@ Frustratingly, despite the explicit instructions above, there was an additional 
 
 ## Results 
 *orcarouter/Qwen3.8-27B-Uncensored-NVFP4*
-<img src="/assets/benchmarking_qwen/abliterated_qwen3-8_hacking_results" alt="Strix htop output" style="max-width:100%; height:auto;">
+<img src="/assets/benchmarking_qwen/abliterated_qwen3-8_hacking_results.pmg" alt="Strix htop output" style="max-width:100%; height:auto;">
 *Qwen3.8-27B-FP8*
 <img src="/assets/benchmarking_qwen/qwen3-8_hacking_results.png" alt="Strix htop output" style="max-width:100%; height:auto;">
 
