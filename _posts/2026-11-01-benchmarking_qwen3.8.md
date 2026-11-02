@@ -69,9 +69,9 @@ Frustratingly, despite the explicit instructions above, there was an additional 
 <img src="/assets/benchmarking_qwen/180min_pause.png" alt="Strix htop output" style="max-width:100%; height:auto;">
 
 ## Results 
-*orcarouter/Qwen3.8-27B-Uncensored-NVFP4*
+**orcarouter/Qwen3.8-27B-Uncensored-NVFP4**
 <img src="/assets/benchmarking_qwen/abliterated_qwen3-8_hacking_results.png" alt="Strix htop output" style="max-width:100%; height:auto;">
-*Qwen3.8-27B-FP8*
+**Qwen3.8-27B-FP8**
 <img src="/assets/benchmarking_qwen/qwen3-8_hacking_results.png" alt="Strix htop output" style="max-width:100%; height:auto;">
 
 The results are pretty decisive - the abliterated version significantly outperforms the default, safety-aligned model. While expected - this is a hacking challenge, safety-aligned models frequently refuse to follow direct orders; whereas abliterated models (read: “safety alignment substantially removed”) have no such objections - the sheer magnitude of the difference surprised me. Going into this, I assumed that the agentic harness - Strix - would obviate much of the issues commonly faced when prompting non-abliterated models to perform cybersecurity, particularly offensive cybersecurity, tasks. It seems that post-training safety alignment exerts substantial influence on whether or not a model will comply, and more importantly successfully execute, cybersecurity tasks. 
