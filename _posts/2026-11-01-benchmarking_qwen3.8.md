@@ -80,17 +80,12 @@ That being said (written), I made an intentional choice to NOT optimize the prom
 
 ## Further Findings
 Each run deposits some ‘log’ files - coverage.json, findings.sarif, run.json, strix.log - which I ran through Grok 4.7 to ‘surface’ any interesting findings. This is what it came back with:
-**Qwen/Qwen3.8-27B-FP8** 
 <img src="/assets/benchmarking_qwen/qwen_grok_table.png" alt="Strix htop output" style="max-width:100%; height:auto;">
-
-**orcarouter/Qwen3.8-27B-Uncensored-NVFP4**
 <img src="/assets/benchmarking_qwen/orca_grok_table.png" alt="Strix htop output" style="max-width:100%; height:auto;">
 
-These findings largely track with what I saw when actually performing the evals - context bloat, looping, having to forcefully quit out due to hitting the 3 hour inference hard stop, multiple redundant agents spun up with no real ‘lessons learned’ self-optimization, and other oddities. 
+These findings largely track with what I saw when actually performing the evals - context bloat, looping, having to forcefully quit out due to hitting the 3 hour inference hard stop, multiple redundant agents spun up with no real ‘lessons learned’ self-optimization, and other oddities. Something important to note is that the **Outcome** of 1 confirmed solve for the base Qwen model is a bit misleading - this is regarding how Strix work, and what artifacts it leaves behind: Strix is supposed to **pentest** your target, meaning it leaves a report on how to remediate vulnerabilities. Since I force quit the run at the 3hr mark, no report was generated - and in the case of the base qwen model, only one **"confirmed solve"**. 
 
 ## Limitations and Future Work
 There were some pretty obvious limitations with this project. Most notably, this was a single pass - just one run. While the results were largely expected, it would be wise to repeat the experiment a handful of times for each model and collect some averages. Not only would it verify the veracity of  the finding discovered here, it would likely surface more interesting findings, yielding a fertile ground for future work. 
 
 As it stands, future work is largely confined to repeating the findings - likely with more powerful models with larger context windows to avoid the issues outlined earlier - and optimizing the ‘instruction prompt’. One could also host OWASP Juice Shop in a VM, instead of a container, permitting the exploitation of the more ‘dangerous’ challenges. Enabling the coding challenges and LLM challenges would be a nice touch. On the other hand, one could point these cyber abliterated models to more… ‘realistic’ targets, such as HackTheBox machines or custom designed ‘cyber-ranges’ - something I have in mind for an upcoming project!
-
- 
