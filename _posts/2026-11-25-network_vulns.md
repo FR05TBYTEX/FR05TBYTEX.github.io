@@ -16,11 +16,11 @@ While the idea of computers goes back to Charles Babbage and Ada Lovelace, who f
 
 Enter **ARPANET:** superbly demonstrated in the 1972 International Conference on Computer Communications (ICCC), the world was introduced to the concept of routing, packet switching, and remote computer communications. In a large conference hall, attendees were able to interact with computer terminals through which they could remotely communicate with other terminals running heterogeneous computer systems. In other words, the real breakthrough here was a standardized set of protocols allowing different computers to talk to one another over a network. This birthed a networked computer environment, opening up cyberspace from closed local subnets of homogenous computer systems to wider networks of non-uniform computer systems.
 
-<img src="/assets/net_vulns/ex_6.5.0_Arpanet_protocols.png" alt="ARPANET protocols" style="max-width:100%; height:auto;">
+<img src="/assets/net_vulns/ex_6.5.0_Arpanet_protocols.png" alt="ARPANET protocols" style="display:block; margin:0 auto; max-width:100%; height:auto;">
 
 So how did it actually work? The above [diagram](https://historyofcomputercommunications.info/section/6.5/host-to-host-software-1970/) is one of the first conceptual visualizations, and shows how even the earliest protocols were built on top of one another. In other words, data communication in ARPANET was a layered relationship. Do note the large ‘ad hoc’ area, which shows that even in those early days, engineers and architects knew that there was much space to grow and evolve. 
 
-<img src="/assets/net_vulns/arpanet_protocols_layers.png" alt="ARPANET protocols layers" style="max-width:100%; height:auto;">
+<img src="/assets/net_vulns/arpanet_protocols_layers.png" alt="ARPANET protocols layers" style="display:block; margin:0 auto; max-width:100%; height:auto;">
 
 The model above, taken from a [great blog post](https://twobithistory.org/2021/03/08/arpanet-protocols.html) by [Sinclair Target](https://sinclairtarget.com/) breaks down the various different protocols that underpinned and enabled ARPANET. At layer 0, the IMP-to-IMP protocol was entirely managed by [BBN](https://ethw.org/Bolt_Beranek_and_Newman_Inc.), a consulting group which built Interface Message Processors, which they deployed at each of the host sites connected to the ARPANET. These IMPs acted as routers and facilitated site-to-site communications - thus layer 0 was entirely managed by BBN. Level 1, the protocol allowing hosts to communicate with IMPs, was specified by BBN and given lots of specific rules. See Sinclair’s blog post for a more in depth explanation.
 
@@ -54,11 +54,17 @@ If one gained access to a server, they could add their username and host to the 
 
 These flaws were masterfully exploited by the Morris Worm - the first major Internet worm, released in November 1988 by Robert T. Morris, a PhD student at Cornell, whose father was, ironically, Chief Scientist at the National Security Agency’s (NSA) National Computer Security Center (NCSC). The worm scanned systems for open rsh/rlogin services and, upon finding them, checked hosts.equiv and .rhosts files. It then attempted to connect as those trusted users (often spoofing or simply relying on the weak hostname/IP trust checks of the era). Combined with other exploits (a buffer overflow in fingerd and the sendmail debug backdoor), this let the worm rapidly spread across the early Internet, infecting thousands of machines and demonstrating the folly of relying on simple passwordless trust relationships. I’ve compiled a table of ‘foundational’ protocols that prioritize functionality over security:
 
-<TABLE OF FOUNDATIONAL PROTOCOLS HERE>
+<details>
+<summary> Table of Foundational Protocols>
+<img src="/assets/net_vulns/foundational_protocols.png" alt="foundational protocols" style="max-width:100%; height:auto;">
+</details>
 
 These security deficiencies directly influenced the development of protocols and tools that were built with security in mind, such as SSH (see [RFC 4251](https://www.rfc-editor.org/info/rfc4251/) through [RFC 4256](https://www.rfc-editor.org/info/rfc4256/)), which replaced the insecure rlogin/rsh suite with encrypted, authenticated connections; Kerberos, a ticket-based authentication system that enabled nodes to authenticate themselves without exposing secrets ([see RFC 4120](https://www.rfc-editor.org/info/rfc4120/)); SSL/TLS, which provided encrypted transport for a wide range of protocols (see [RFC 2246](https://www.rfc-editor.org/info/rfc2246/), [RFC 6101](https://www.rfc-editor.org/info/rfc6101/), and [RFC 9846](https://www.rfc-editor.org/info/rfc9846/)); and IPSec, which secured traffic at the network layer by encrypting and authenticating packets and tunneling them through encapsulating security payloads, so that even otherwise insecure protocols could be protected end-to-end without relying on host-based trust (see [RFC 6071](https://www.rfc-editor.org/info/rfc6071/)). There are many such security-focused protocols - I’ve listed the main ones below:
 
-<TABLE OF SECURITY PROTOCOLS HERE>
+<details>
+<summary> Table of Security-Focused Protocols>
+<img src="/assets/net_vulns/security_protocols.png" alt="security protocols" style="max-width:100%; height:auto;">
+</details>
 
 ## Backwards Compatibility
 
@@ -78,7 +84,7 @@ TL;DR - **if it ain’t broken, don’t fix it!** was (and largely still is) the
 
 Another angle to consider is that the early internet was a mostly closed, tight-knit community. From NSFNET and academic networks - Cliff Stoll, author of The [Cuckoo’s Egg](https://www.goodreads.com/book/show/18154.The_Cuckoo_s_Egg) (a thrilling book detailing his experience conducting a live investigation of a European threat actor attempting to access military secrets by hacking into academic networks, pivoting to military networks, exploiting vulnerabilities, performing reconnaissance, and extracting secrets), writes that, in his time (the mid to late 80s), one could simply pick up the phone and call whoever was on the other end of the wire. Yes, the early Internet really was that personal - from BBS’s (bulletin board systems) that spawned the world’s first hacker movements (MoD, LoD, CODC), to email lists and later forums - people, sometimes aliases, were well-known, well-respected, and there existed a culture of high trust and openness that created a shared innate gentlemanly code of conduct - [netiquette](ttps://www.rfc-editor.org/rfc/rfc1855.txt) - to supported a collaborative, transparent approach to using the internet that obviated most serious security issues.
 
-<CONCLUSION AND LINK TO SPACEMAN IMG HERE>
+**CONCLUSION HERE**
 
 <img src="/assets/net_vulns/spaceman.jpg" alt="always has been insecure" style="max-width:100%; height:auto;">
 
