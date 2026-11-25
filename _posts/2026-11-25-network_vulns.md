@@ -16,11 +16,11 @@ While the idea of computers goes back to Charles Babbage and Ada Lovelace, who f
 
 Enter **ARPANET:** superbly demonstrated in the 1972 International Conference on Computer Communications (ICCC), the world was introduced to the concept of routing, packet switching, and remote computer communications. In a large conference hall, attendees were able to interact with computer terminals through which they could remotely communicate with other terminals running heterogeneous computer systems. In other words, the real breakthrough here was a standardized set of protocols allowing different computers to talk to one another over a network. This birthed a networked computer environment, opening up cyberspace from closed local subnets of homogenous computer systems to wider networks of non-uniform computer systems.
 
-<ARPANET PROTOCOL STACK IMG HERE>
+<img src="/assets/net_vulns/ex_6.5.0_Arpanet_protocols.png" alt="ARPANET protocols" style="max-width:100%; height:auto;">
 
 So how did it actually work? The above [diagram](https://historyofcomputercommunications.info/section/6.5/host-to-host-software-1970/) is one of the first conceptual visualizations, and shows how even the earliest protocols were built on top of one another. In other words, data communication in ARPANET was a layered relationship. Do note the large ‘ad hoc’ area, which shows that even in those early days, engineers and architects knew that there was much space to grow and evolve. 
 
-<LAYERED MODEL STACK HERE>
+<img src="/assets/net_vulns/arpanet_protocols_layers.png" alt="ARPANET protocols layers" style="max-width:100%; height:auto;">
 
 The model above, taken from a [great blog post](https://twobithistory.org/2021/03/08/arpanet-protocols.html) by [Sinclair Target](https://sinclairtarget.com/) breaks down the various different protocols that underpinned and enabled ARPANET. At layer 0, the IMP-to-IMP protocol was entirely managed by [BBN](https://ethw.org/Bolt_Beranek_and_Newman_Inc.), a consulting group which built Interface Message Processors, which they deployed at each of the host sites connected to the ARPANET. These IMPs acted as routers and facilitated site-to-site communications - thus layer 0 was entirely managed by BBN. Level 1, the protocol allowing hosts to communicate with IMPs, was specified by BBN and given lots of specific rules. See Sinclair’s blog post for a more in depth explanation.
 
